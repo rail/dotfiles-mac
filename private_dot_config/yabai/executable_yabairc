@@ -1,0 +1,47 @@
+#!/usr/bin/env sh
+
+# bsp or float (default: bsp)
+yabai -m config layout bsp
+
+# set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
+# TODO: makes popups disappear
+# yabai -m config focus_follows_mouse autofocus
+
+# floating windows are always on top (default: off)
+yabai -m config window_topmost on
+
+# show shadows only for floating windows
+yabai -m config window_shadow float
+
+# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+
+# Spacebar
+SPACEBAR_HEIGHT=$(spacebar -m config height)
+yabai -m config external_bar all:$SPACEBAR_HEIGHT:0
+
+# Padding
+yabai -m config top_padding    5
+yabai -m config bottom_padding 5
+yabai -m config left_padding   5
+yabai -m config right_padding  5
+yabai -m config window_gap     5
+
+# Rules
+yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
+yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Path Finder$" manage=off
+yabai -m rule --add app="^Time Out$" manage=off
+
+yabai -m space 1 --label shell
+yabai -m space 2 --label chrome
+yabai -m space 3 --label firefox
+yabai -m space 4 --label todo
+yabai -m space 5 --label slack
+yabai -m space 6 --label im
+yabai -m space 7 --label misc
+yabai -m space 8 --label util
+yabai -m space 9 --label common
+yabai -m space 10 --label brains

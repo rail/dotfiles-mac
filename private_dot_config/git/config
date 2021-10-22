@@ -1,0 +1,65 @@
+[user]
+    name = Rail Aliiev
+    email = rail@iqchoice.com
+    signingKey = 9DB8043937A9AF8BF2ED8D980864EAE66D1BF00D
+
+[url "git@github.com:cockroachlabs"]
+    insteadOf = https://github.com/cockroachlabs
+
+[alias]
+    ci = commit -v
+    br = branch
+    st = status
+    co = checkout
+    di = diff -U8 --patch-with-stat --binary
+    du = diff -U8 --patch-with-stat --binary @{u}...
+    nb = !sh -c 'git checkout -b $1 origin/master' -
+
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    ll = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --numstat --date=relative
+    dc = diff --cached
+    unstage = reset HEAD --
+    wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+
+[color]
+    ui = auto
+[github]
+    user = rail
+[core]
+    excludesfile = ~/.config/git/globalignore
+    autocrlf = input
+    safecrlf = true
+[commit]
+    gpgsign = true
+[diff]
+    renames = copy
+    colormoved = zebra
+    compactionHeuristic = true
+[init]
+	defaultBranch = main
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
+    line-numbers = true
+    side-by-side = true
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    # commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    # hunk-header-decoration-style = blue box
+    # hunk-header-file-style = red
+    # hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
